@@ -29,9 +29,8 @@
 ### 🌟 Manajemen Transaksi:
 
 - Menambahkan transaksi baru
-- Mengubah status transaksi
 - Menghapus transaksi
-- Mencari transaksi berdasarkan ID, nama pembeli, atau tanggal transaksi
+- Menampilkan transaksi berdasarkan user yang login
 
 ## 🚀 Instalasi:
 
@@ -43,6 +42,12 @@ npm install
 ```
 
 - Konfigurasi database MySQL di file .env
+- generate prisma migrate
+
+```bash
+npx prisma migrate dev --name init
+```
+
 - Jalankan server:
 
 ```bash
