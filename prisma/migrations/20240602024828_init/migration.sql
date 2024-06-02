@@ -32,7 +32,9 @@ CREATE TABLE `Product` (
 CREATE TABLE `Transactions_detail` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `no_order` VARCHAR(191) NOT NULL,
-    `user_id` VARCHAR(191) NOT NULL,
+    `user_email` VARCHAR(191) NOT NULL,
+    `total_price` INTEGER NOT NULL,
+    `date` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `Transactions_detail_no_order_key`(`no_order`),
     PRIMARY KEY (`id`)
@@ -43,14 +45,13 @@ CREATE TABLE `Transactions` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `id_products` INTEGER NOT NULL,
     `qty` INTEGER NOT NULL,
-    `total_price` INTEGER NOT NULL,
     `order_number` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Transactions_detail` ADD CONSTRAINT `Transactions_detail_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `User`(`email`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Transactions_detail` ADD CONSTRAINT `Transactions_detail_user_email_fkey` FOREIGN KEY (`user_email`) REFERENCES `User`(`email`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Transactions` ADD CONSTRAINT `Transactions_id_products_fkey` FOREIGN KEY (`id_products`) REFERENCES `Product`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

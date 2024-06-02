@@ -42,8 +42,10 @@ model Product {
 model Transactions_detail {
   id        Int      @id @default(autoincrement())
   no_order    String  @unique
-  user        User      @relation(fields: [user_id], references: [email])
-  user_id     String 
+  user        User      @relation(fields: [user_email], references: [email])
+  user_email     String 
+  total_price Int
+  date     DateTime @updatedAt
   transactions Transactions[]
 }
 
@@ -52,7 +54,6 @@ model Transactions {
   id_product  Product     @relation(fields: [id_products], references: [id])
   id_products  Int
   qty         Int
-  total_price Int
   order    Transactions_detail  @relation(fields: [order_number], references: [no_order])
   order_number  String
 }

@@ -1,23 +1,26 @@
-// import { Request, Response, NextFunction } from "express";
-// import { verifyToken } from "../helpers/utils/jwt";
+import { Request, Response, NextFunction } from "express";
+import { verifyToken } from "../helpers/utils/jwt";
 
-// const deserialize = async (req: Request, res: Response, next: NextFunction) => {
-//   const accessToken: any = req.headers.authorization?.replace("Bearer ", "");
-//   console.log(accessToken);
-//   if (!accessToken) {
-//     next();
-//   }
+export const deserialize = async (req: Request, res: Response, next: NextFunction) => {
+  const accessToken: any = req.headers.authorization?.replace("Bearer ", "");
 
-//   const token: any = await verifyToken(accessToken);
+  if (!accessToken) {
+    next();
+  }
 
-//   if (token.decode) {
-//     res.locals.user = token.decode;
-//     return next();
-//   }
-//   if (token.expired) {
-//     return next();
-//   }
-//   return next();
-// };
+  const { decoded, valid, err }: any = await verifyToken(accessToken);
 
-// export default deserialize;
+  if (!decoded) {
+    return res.status(401).send({ message: "Anda belum login" });
+  }
+
+  if (decoded.role !== "admin") {
+    res.locals.user = decoded;
+    return next();
+  } else if (decoded.role === "admin") {
+    res.locals.admin = decoded;
+    return next();
+  } else {
+    res.status(403).send({ message: "anda tidak memiliki akses" });
+  }
+};

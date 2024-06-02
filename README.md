@@ -1,236 +1,50 @@
-## USER MENEGEMENT API
+# Showroom Motor Server
 
-- POST : /user/register
+#### nama saya ✨ahmad sofi sidik✨, mahasiswa jurusan teknologi informasi di universitas bina sarana informatika. projek ini adalah use case yang saya buat kurang dari sebulan dalam rangka mengikuti lomba di salah satu platform pembelajaran di indonesia. dalam case ini saya mendapatkan client langsung dari teman saya yang mempunyai SHOWROOM MOTOR dan berkeinginan ingin mengembangkan bisnisnya pada platform digital supaya lebih gampang untuk diakses. oleh karena itu saya berharap dengan adanya projek ini bisa menunjukan kemampuan saya dalam mengembangkan perangkat lunak dan bisa memberi efek positif kepada khalayak umum dan terkhusus pada diri saya.
 
-request body:
+## 🚀 Teknologi yang digunakan:
 
-```json
-{
-  "username": "",
-  "email": "",
-  "alamat": "",
-  "nomor hp": "",
-  "role": "",
-  "password": ""
-}
+- TypeScript
+- Express
+- Prisma
+- MySQL
+- JSON Web Token (JWT)
+- bcrypt
+- Joi
+
+## 🚀 Fitur:
+
+### 🌟 Manajemen Pengguna:
+
+- Register dan login pengguna
+- Mengelola profil pengguna
+
+### 🌟 Manajemen Motor:
+
+- Menambahkan motor baru
+- Mengubah informasi motor
+- Menghapus motor
+- Mencari motor berdasarkan merek, model, atau harga
+
+### 🌟 Manajemen Transaksi:
+
+- Menambahkan transaksi baru
+- Mengubah status transaksi
+- Menghapus transaksi
+- Mencari transaksi berdasarkan ID, nama pembeli, atau tanggal transaksi
+
+## 🚀 Instalasi:
+
+- Clone repositori ini.
+- Install dependensi:
+
+```bash
+npm install
 ```
 
-response body:
+- Konfigurasi database MySQL di file .env
+- Jalankan server:
 
-```json
-{
-  "status": 200,
-  "message": ""
-}
-```
-
-- POST : /user/login
-
-request body:
-
-```json
-{
-  "email": "",
-  "password": ""
-}
-```
-
-response body:
-
-```json
-{
-  "message": "",
-  "token": ""
-}
-```
-
-## PRODUCT MANAGEMENT
-
-- GET: /product
-
-response body:
-
-```json
-{
-  "message": "",
-  "payload": [
-    {
-      "id": "",
-      "merek": "",
-      "model": "",
-      "color": "",
-      "tipe": "",
-      "tahun": "",
-      "price": "",
-      "stok": "",
-      "spesifikasi": "",
-      "image": ""
-    }
-  ]
-}
-```
-
-- GET: /product/:id
-
-response body:
-
-```json
-{
-  "message": "",
-  "payload": [
-    {
-      "id": "",
-      "merek": "",
-      "model": "",
-      "color": "",
-      "tipe": "",
-      "tahun": "",
-      "price": "",
-      "stok": "",
-      "spesifikasi": "",
-      "image": ""
-    }
-  ]
-}
-```
-
-- POST: /product
-
-requeest body:
-
-```json
-{
-  "merek": "",
-  "model": "",
-  "color": "",
-  "tipe": "",
-  "tahun": "",
-  "price": "",
-  "stok": "",
-  "spesifikasi": "",
-  "image": ""
-}
-```
-
-response body:
-
-```json
-{
-  "message": "",
-  "payload": [
-    {
-      "id": "",
-      "merek": "",
-      "model": "",
-      "color": "",
-      "tipe": "",
-      "tahun": "",
-      "price": "",
-      "stok": "",
-      "spesifikasi": "",
-      "image": ""
-    }
-  ]
-}
-```
-
-- PUT: /product/:id
-
-response body:
-
-```json
-{
-  "merek": "",
-  "model": "",
-  "color": "",
-  "tipe": "",
-  "tahun": "",
-  "price": "",
-  "stok": "",
-  "spesifikasi": "",
-  "image": ""
-}
-```
-
-response body :
-
-```json
-{
-  "message": "",
-  "payload": [
-    {
-      "id": "",
-      "merek": "",
-      "model": "",
-      "color": "",
-      "tipe": "",
-      "tahun": "",
-      "price": "",
-      "stok": "",
-      "spesifikasi": "",
-      "image": ""
-    }
-  ]
-}
-```
-
-- DELETE: /product/:id
-
-response body :
-
-```json
-{
-  "message": "",
-  "payload": [
-    {
-      "id": "",
-      "merek": "",
-      "model": "",
-      "color": "",
-      "tipe": "",
-      "tahun": "",
-      "price": "",
-      "stok": "",
-      "spesifikasi": "",
-      "image": ""
-    }
-  ]
-}
-```
-
-## TRANSACTIONS API
-
-- POST : /transaction
-
-request body
-
-```json
-{
-  "no-order": "",
-  "total-price": 10000,
-  "products": {
-    "id-product": "",
-    "quantyty": ""
-  }
-}
-```
-
-- GET : /trancation/:userid
-
-response body
-
-```json
-{
-  "message": "",
-  "payload": [
-    {
-      "no-order": "xxx",
-      "total-price": 10000,
-      "products": {
-        "id-product": "",
-        "quantyty": ""
-      }
-    }
-  ]
-}
+```bash
+npm run dev
 ```

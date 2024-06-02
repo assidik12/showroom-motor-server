@@ -24,7 +24,6 @@ export const loginUser = async (email: string, password: string) => {
   if (status === 200) {
     let pwd: any = result?.password;
     const validation = await compare(password, pwd);
-    console.log(validation);
     if (validation) {
       const { ...data } = result;
       const token = sign({ ...data }, process.env.JWT_PRIVATE_KEY as string, {

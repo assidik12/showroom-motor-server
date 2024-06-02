@@ -1,6 +1,6 @@
 import express, { IRouter, Request, Response } from "express";
 import { registerUser, loginUser, RefreshToken } from "../service/user";
-// import { requireUser } from "../middlewares/auth";
+import { deserialize } from "../middlewares/deseralize";
 
 const userRouter: IRouter = express.Router();
 userRouter.post("/register", async (req: Request, res: Response) => {
@@ -28,8 +28,9 @@ userRouter.post("/login", async (req: Request, res: Response) => {
   }
 });
 
-userRouter.post("/refreshToken", async (req: Request, res: Response) => {
+userRouter.post("/refreshToken", deserialize, async (req: Request, res: Response) => {
   const { refreshToken } = req.body;
+  console.log(refreshToken);
   const { token, status, message }: any = await RefreshToken(refreshToken);
   if (status === 200) {
     res.status(200).send({ message, token });
